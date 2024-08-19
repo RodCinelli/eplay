@@ -1,12 +1,13 @@
 import Section from '../Section'
 
-import { Item, Items, Action } from './styles'
+import { Item, Items, Action, Modal, ModalContent } from './styles'
 
 import spiderman from '../../assets/images/banner-homem-aranha.png'
 import hogwarts from '../../assets/images/fundo_hogwarts.png'
 
 import play from '../../assets/images/play.png'
 import zoom from '../../assets/images/zoom.png'
+import fechar from '../../assets/images/fechar.png'
 
 type GalleryItem = {
   type: 'image' | 'video'
@@ -30,30 +31,51 @@ const mock: GalleryItem[] = [
 
 type Props = {
   defaultCover: string
+  name: string
 }
 
-const Gallery = ({ defaultCover }: Props) => {
+const Gallery = ({ defaultCover, name }: Props) => {
   const getMediaCover = (item: GalleryItem) => {
     if (item.type === 'image') return item.url
     return defaultCover
   }
 
+  const getMediaIcon = (item: GalleryItem) => {
+    if (item.type === 'image') return zoom
+    return play
+  }
+
   return (
-    <Section title="Galeria" background="black">
-      <Items>
-        {mock.map((media, index) => (
-          <Item key={media.url}>
-            <img
-              src={getMediaCover(media)}
-              alt={`Mídia ${index + 1} de Nome do jogo`}
-            />
-            <Action>
-              <img src={zoom} alt="Clique para maximizar a imagem" />
-            </Action>
-          </Item>
-        ))}
-      </Items>
-    </Section>
+    <>
+      <Section title="Galeria" background="black">
+        <Items>
+          {mock.map((media, index) => (
+            <Item key={media.url}>
+              <img
+                src={getMediaCover(media)}
+                alt={`Mídia ${index + 1} de ${name}`}
+              />
+              <Action>
+                <img
+                  src={getMediaIcon(media)}
+                  alt="Clique para maximizar a mídia"
+                />
+              </Action>
+            </Item>
+          ))}
+        </Items>
+      </Section>
+      <Modal>
+        <ModalContent className="container">
+          <header>
+            <h4>{name}</h4>
+            <img src={fechar} alt="Ícone de fechar" />
+          </header>
+          <img src={spiderman} />
+        </ModalContent>
+        <div className="overlay"></div>
+      </Modal>
+    </>
   )
 }
 
