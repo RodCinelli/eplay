@@ -9,6 +9,12 @@ export type Props = {
   games: Game[]
 }
 
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
 const ProductsList = ({ background, title, games }: Props) => {
   const getGameTags = (game: Game) => {
     const tags = []
@@ -20,6 +26,12 @@ const ProductsList = ({ background, title, games }: Props) => {
     if (game.prices.discount) {
       tags.push(`${game.prices.discount}%`)
     }
+
+    if (game.prices.current) {
+      tags.push(formataPreco(game.prices.current))
+    }
+
+    return tags
   }
 
   return (
@@ -33,9 +45,9 @@ const ProductsList = ({ background, title, games }: Props) => {
               category={game.details.category}
               description={game.description}
               image={game.media.thumbnail}
-              infos={game.infos}
-              system={game.system}
-              title={game.title}
+              infos={getGameTags(game)}
+              system={game.details.system}
+              title={game.name}
             />
           ))}
         </List>

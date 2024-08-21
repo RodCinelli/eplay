@@ -45,6 +45,10 @@ const Home = () => {
     fetch('http://fake-api-tau.vercel.app/api/eplay/promocoes')
       .then((res) => res.json())
       .then((res) => setPromocoes(res))
+
+    fetch('http://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setEmBreve(res))
   }, [])
 
   return (
