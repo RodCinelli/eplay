@@ -27,3 +27,21 @@ export const Sidebar = styled.aside`
   z-index: 1;
   padding: 40px 16px 0 16px;
 `
+
+export const Prices = styled.p`
+  font-weight: bold;
+  font-size: 14px;
+  color: ${cores.branca};
+
+  span {
+    display: block;
+    font-size: 12px;
+    color: ${cores.cinzaClaro};
+  }
+`
+
+export const Quantity = styled.p`
+  font-weight: bold;
+  font-size: 16px;
+  color: ${cores.branca};
+`

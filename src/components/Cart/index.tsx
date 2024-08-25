@@ -1,6 +1,6 @@
 import Button from '../Button'
 
-import { Overlay, CartContainer, Sidebar } from './styles'
+import { Overlay, CartContainer, Sidebar, Prices, Quantity } from './styles'
 
 const Cart = () => (
   <CartContainer>
@@ -11,10 +11,10 @@ const Cart = () => (
           <h3>Nome do jogo</h3>
         </li>
       </ul>
-      <p>2 jogos(s) no carrinho</p>
-      <p>
+      <Quantity>2 jogos(s) no carrinho</Quantity>
+      <Prices>
         Total de R$ 250,00 <span>Em até 6x sem juros</span>
-      </p>
+      </Prices>
       <Button title="Clique aqui para continuar com a compra" type="button">
         Continuar com a compra
       </Button>
