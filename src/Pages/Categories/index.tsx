@@ -31,7 +31,7 @@ const Categories = () => {
         <ProductsList games={rpgGames} title="RPG" background="gray" />
         <ProductsList
           games={simulationGames}
-          title="Simulacao"
+          title="Simulação"
           background="black"
         />
       </>
