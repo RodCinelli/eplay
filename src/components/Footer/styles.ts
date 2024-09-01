@@ -21,9 +21,9 @@ export const Links = styled.ul`
 `
 
 export const Link = styled(HashLink)`
-color: ${cores.cinzaClaro}
-text-decoration: none;
-margin-right: 8px;
+  color: ${cores.cinzaClaro};
+  text-decoration: none;
+  margin-right: 8px;
 `
 
 export const FooterSection = styled.div`
