@@ -50,10 +50,11 @@ export const TabButton = styled.button<TabButtonProps>`
   height: 32px;
   border: none;
   margin-right: 16px;
-  padding 0 8px;
+  padding: 0 8px;
   cursor: pointer;
+  align-items: center; // Alinha verticalmente o ícone e o texto no centro
 
   img {
-    margin-right: 8px;
+    margin-right: 8px; // Espaçamento entre a imagem e o texto
   }
 `
