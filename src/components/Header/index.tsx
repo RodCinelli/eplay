@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 import {
   HeaderBar,
@@ -50,10 +51,20 @@ const Header = () => {
                 </Link>
               </LinkItem>
               <LinkItem>
-                <a href="#">Novidades</a>
+                <HashLink
+                  title="Clique aqui para acessar a seção de em breve"
+                  to="/coming-soon"
+                >
+                  Em breve
+                </HashLink>
               </LinkItem>
               <LinkItem>
-                <a href="#">Promoções</a>
+                <HashLink
+                  title="Clique aqui para acessar a seção de em promoções"
+                  to="/#on-sale"
+                >
+                  Promoções
+                </HashLink>
               </LinkItem>
             </Links>
           </nav>
