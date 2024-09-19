@@ -7,6 +7,7 @@ export const Container = styled.footer`
   padding: 32px 0;
   font-size: 14px;
   margin-top: 40px;
+  text-align: center;
 `
 
 export const SectionTitle = styled.h4`
@@ -18,6 +19,7 @@ export const SectionTitle = styled.h4`
 export const Links = styled.ul`
   display: flex;
   margin-top: 16px;
+  justify-content: center;
 `
 
 export const Link = styled(HashLink)`
