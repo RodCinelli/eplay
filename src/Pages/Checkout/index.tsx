@@ -45,7 +45,7 @@ const Checkout = () => {
       expiresMonth: '',
       expiresYear: '',
       cardCode: '',
-      installments: ''
+      installments: 1
     },
     validationSchema: Yup.object({
       fullName: Yup.string()
@@ -86,7 +86,7 @@ const Checkout = () => {
       cardCode: Yup.string().when((values, schema) =>
         payWithCard ? schema.required('O campo é obrigatório') : schema
       ),
-      installments: Yup.string().when((values, schema) =>
+      installments: Yup.number().when((values, schema) =>
         payWithCard ? schema.required('O campo é obrigatório') : schema
       )
     }),
@@ -101,8 +101,7 @@ const Checkout = () => {
           email: values.deliveryEmail
         },
         payment: {
-          // Correção aqui (faltava o ':')
-          installments: 1,
+          installments: values.installments,
           card: {
             active: payWithCard,
             code: Number(values.cardCode),
@@ -113,17 +112,15 @@ const Checkout = () => {
               name: values.cardDisplayName
             },
             expires: {
-              month: 1,
-              year: 2023
+              month: Number(values.expiresMonth),
+              year: Number(values.expiresYear)
             }
           }
         },
-        products: [
-          {
-            id: 1,
-            price: 10
-          }
-        ]
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.prices.current as number
+        }))
       })
     }
   })
@@ -423,7 +420,10 @@ const Checkout = () => {
                           }
                         >
                           {installments.map((installment) => (
-                            <option key={installment.quantity}>
+                            <option
+                              value={installment.quantity}
+                              key={installment.quantity}
+                            >
                               {installment.quantity}x de{' '}
                               {installment.formattedAmount}
                             </option>
